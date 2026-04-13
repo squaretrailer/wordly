@@ -1,0 +1,288 @@
+/* Universal Styling */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: antiquewhite;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Header & Nav */
+header {
+    background-color: black;
+    color: #fff;
+    padding: 2rem 0;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+/* Split Screen Layout */
+.split-screen {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.left, .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.left {
+    padding: 2rem;
+    justify-content: flex-start;
+}
+
+/* Vertical line */
+.split-screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #ff0000;
+    transform: translateX(-50%);
+}
+
+/* Search area */
+.search-area {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    margin-right: 1rem;   /* adds space between button and the vertical line */
+}
+
+.search-area input {
+    flex: 1;
+    padding: 0.8rem;
+    font-size: 1.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-area button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Word display (search results) */
+.word-display {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    min-height: 100%;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-right: 1rem;   /* adds space between container and vertical line */
+}
+
+/* Right side – image covers whole column */
+.right {
+    padding: 0;
+    overflow: hidden;
+}
+
+.right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    padding: 3rem 2rem 1.5rem;
+    margin-top: 4rem;
+    border-top: 1px solid #333;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-form {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-form h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #ffcc00;
+}
+
+.footer-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-form input {
+    padding: 0.8rem 1rem;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #333;
+    color: #fff;
+}
+
+.footer-form button {
+    background-color: #ffcc00;
+    color: #111;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.footer-right {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ffcc00;
+    transform: translateY(-3px);
+}
+
+.wordly-message {
+    background-color: rgba(255, 204, 0, 0.1);
+    border-left: 4px solid #ffcc00;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.wordly-message p {
+    font-size: 1.4rem;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+footer > p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    border-top: 1px solid #333;
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Back to Top button */
+footer button {
+    display: block;
+    margin: 1.5rem auto 0;
+    background-color: #ffcc00;
+    color: #111;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+}
+footer button:hover {
+    background-color: #e6b800;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .split-screen {
+        flex-direction: column;
+    }
+    .split-screen::after {
+        display: none;
+    }
+    .left {
+        padding: 1.5rem;
+    }
+    .right {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-form button {
+        align-self: center;
+    }
+    .social-links {
+        justify-content: center;
+    }
+}
