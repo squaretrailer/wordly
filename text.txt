@@ -1,0 +1,88 @@
+PROJECT: Wordly Dictionary (single page)
+
+GOAL: Allow user to search any English word and display:
+      - Definition(s)
+      - Part of speech
+      - Example sentence (if available)
+      - Synonyms (if available)
+      - Phonetic transcription (e.g., /həˈloʊ/)
+      - Audio pronunciation (playable)
+      - Source (e.g., "Free Dictionary API")
+
+TECH STACK:
+   - HTML5 (semantic)
+   - CSS3 (Flexbox/Grid, responsive, dark/light?)
+   - JavaScript (ES6+)
+   - External API: Free Dictionary API (https://dictionaryapi.dev/)
+
+PAGES: Only one page – index.html
+
+FOLDER STRUCTURE:
+   /
+   ├── index.html
+   ├── style.css
+   ├── script.js
+   ├── images/
+   │    └── logo.webp, background image, etc.
+
+---------------------------------------------
+PSEUDOCODE (step‑by‑step)
+---------------------------------------------
+
+1.  ON PAGE LOAD
+      - Set up event listeners:
+          * Search button click
+          * Enter key in search input
+          * Back‑to‑top button click
+      - Display placeholder message in result area
+
+2.  WHEN USER SEARCHES (searchWord function):
+      a. Get trimmed value from search input.
+      b. IF empty → show "Please enter a word" in result area, stop.
+      c. Show "Searching..." in result area.
+      d. TRY to fetch data from:
+            `https://api.dictionaryapi.dev/api/v2/entries/en/{word}`
+         with proper URL encoding.
+      e. IF response is not ok OR response contains "No Definitions Found":
+            → Display "Word not found. Check spelling."
+            → Stop.
+      f. ELSE parse JSON data.
+
+3.  PROCESS API RESPONSE (data[0]):
+      a. Extract:
+          - word itself
+          - phonetics: look for audio URL (first non‑empty .audio)
+          - phonetics: look for text (e.g., "/həˈloʊ/") – show it if exists
+          - meanings array: for each meaning:
+              * partOfSpeech
+              * definition (first one)
+              * example (if exists)
+              * synonyms (first 5, if any)
+      b. Build HTML string for results:
+          - Header: word + phonetic text + audio button (if audio URL exists)
+          - For each meaning: part of speech, definition, example, synonyms
+          - Source credit line: "Definitions from Free Dictionary API"
+      c. Insert HTML into result container.
+      d. Attach audio button event listener (create Audio object and play).
+
+4.  HANDLE ERRORS (catch block):
+      - Show "Error fetching data. Try again later."
+      - Log error to console.
+
+5.  BACK‑TO‑TOP BUTTON:
+      - On click, window.scrollTo({top:0, behavior:'smooth'}).
+
+6.  RESPONSIVE LAYOUT (CSS):
+      - Split‑screen on desktop (left = search + results, right = image).
+      - On mobile (max-width: 768px): stack columns, hide vertical line.
+      - Footer: form left, social + message right, stack on small screens.
+
+7.  ACCESSIBILITY:
+      - Add aria-label to search button.
+      - Ensure focus styles for keyboard navigation.
+      - Use semantic HTML (header, main, footer, section).
+
+8.  EXTRAS (optional but recommended):
+      - Add a "Clear" button to reset search.
+      - Save last searched word in localStorage and restore on page load.
+      - Add a loading spinner instead of just "Searching...".
