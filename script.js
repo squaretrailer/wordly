@@ -1,4 +1,4 @@
-// Dictionary API search
+// Dictionary API search with synonyms and audio
 async function searchWord() {
     const input = document.getElementById('searchQuery');
     if (!input) return;
@@ -21,15 +21,55 @@ async function searchWord() {
             return;
         }
 
-        // Display definitions
-        let html = `<h3>${word}</h3>`;
+        // Find audio URL
+        let audioUrl = '';
+        if (data[0].phonetics && data[0].phonetics.length) {
+            const audioPhonetic = data[0].phonetics.find(p => p.audio && p.audio.trim() !== '');
+            if (audioPhonetic) audioUrl = audioPhonetic.audio;
+        }
+
+        // Build HTML header with audio button
+        let html = `<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <h2 style="margin:0;">${word}</h2>`;
+        if (audioUrl) {
+            html += `<button id="playAudioBtn" style="background:none; border:none; font-size:2rem; cursor:pointer;" aria-label="Play pronunciation">🔊</button>`;
+        }
+        html += `</div>`;
+
+        // Loop through meanings
         data[0].meanings.forEach(meaning => {
             const partOfSpeech = meaning.partOfSpeech;
             const definition = meaning.definitions[0].definition;
             const example = meaning.definitions[0].example ? `<br><em>Example: ${meaning.definitions[0].example}</em>` : '';
-            html += `<p><strong>${partOfSpeech}</strong>: ${definition}${example}</p>`;
+            
+            // Extract synonyms from the first definition
+            let synonyms = meaning.definitions[0].synonyms;
+            let synonymsHtml = '';
+            if (synonyms && synonyms.length > 0) {
+                synonymsHtml = `<p><strong>Synonyms:</strong> ${synonyms.slice(0, 5).join(', ')}</p>`;
+            }
+            
+            html += `<div style="margin-bottom: 1.5rem;">
+                        <p><strong>${partOfSpeech}</strong>: ${definition}${example}</p>
+                        ${synonymsHtml}
+                    </div>`;
         });
+
         resultsDiv.innerHTML = html;
+
+        // Attach audio play event
+        if (audioUrl) {
+            const playBtn = document.getElementById('playAudioBtn');
+            if (playBtn) {
+                // Remove any existing listener to avoid duplicates
+                const newBtn = playBtn.cloneNode(true);
+                playBtn.parentNode.replaceChild(newBtn, playBtn);
+                newBtn.addEventListener('click', () => {
+                    const audio = new Audio(audioUrl);
+                    audio.play().catch(e => console.log('Audio play failed:', e));
+                });
+            }
+        }
 
         console.log("Fetch successful");
     } catch (err) {

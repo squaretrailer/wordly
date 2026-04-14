@@ -55,11 +55,11 @@ nav {
     color: #fff;
 }
 
-
 /* Split Screen Layout */
 .split-screen {
     display: flex;
-    min-height: 80vh;  /* reduced to give space for footer */
+    min-height: 100vh;
+    position: relative;
 }
 
 .left, .right {
@@ -71,6 +71,19 @@ nav {
 .left {
     padding: 2rem;
     justify-content: flex-start;
+}
+
+/* Vertical line inside split-screen */
+.split-screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #ff0000;
+    transform: translateX(-50%);
+    pointer-events: none;
 }
 
 /* Search area */
@@ -247,6 +260,7 @@ footer > p {
     font-size: 1.4rem;
     transition: all 0.3s ease;
 }
+
 #backToTopBtn:hover {
     background-color: #e6b800;
     transform: translateY(-2px);
@@ -257,7 +271,7 @@ footer > p {
     .split-screen {
         flex-direction: column;
     }
-    .page-wrapper::after {
+    .split-screen::after {
         display: none;
     }
     .left {
