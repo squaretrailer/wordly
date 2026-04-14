@@ -21,13 +21,11 @@ body {
 /* Header & Nav */
 header {
     background-color: black;
-    color: #fff;
     padding: 2rem 0;
 }
 
 nav {
     background-color: rgba(0, 0, 0, 0.05);
-    color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,11 +55,11 @@ nav {
     color: #fff;
 }
 
+
 /* Split Screen Layout */
 .split-screen {
     display: flex;
-    min-height: 100vh;
-    position: relative;
+    min-height: 80vh;  /* reduced to give space for footer */
 }
 
 .left, .right {
@@ -75,41 +73,39 @@ nav {
     justify-content: flex-start;
 }
 
-/* Vertical line */
-.split-screen::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background: #ff0000;
-    transform: translateX(-50%);
-}
-
 /* Search area */
 .search-area {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 2rem;
-    margin-right: 1rem;   /* adds space between button and the vertical line */
+    margin-right: 1rem;
 }
 
-.search-area input {
+#searchQuery {
     flex: 1;
     padding: 0.8rem;
     font-size: 1.4rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    outline: none;
 }
 
-.search-area button {
+#searchQuery:focus {
+    border-color: #ff0000;
+}
+
+#searchBtn {
     background-color: #333;
     color: white;
     border: none;
     padding: 0 1.5rem;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.3s;
+}
+
+#searchBtn:hover {
+    background-color: #555;
 }
 
 /* Word display (search results) */
@@ -117,10 +113,10 @@ nav {
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     padding: 1.5rem;
-    min-height: 100%;
+    min-height: 200px;
     font-size: 1.4rem;
     line-height: 1.5;
-    margin-right: 1rem;   /* adds space between container and vertical line */
+    margin-right: 1rem;
 }
 
 /* Right side – image covers whole column */
@@ -140,7 +136,6 @@ nav {
 footer {
     background-color: #111;
     padding: 3rem 2rem 1.5rem;
-    margin-top: 4rem;
     border-top: 1px solid #333;
 }
 
@@ -239,7 +234,7 @@ footer > p {
 }
 
 /* Back to Top button */
-footer button {
+#backToTopBtn {
     display: block;
     margin: 1.5rem auto 0;
     background-color: #ffcc00;
@@ -252,7 +247,7 @@ footer button {
     font-size: 1.4rem;
     transition: all 0.3s ease;
 }
-footer button:hover {
+#backToTopBtn:hover {
     background-color: #e6b800;
     transform: translateY(-2px);
 }
@@ -262,7 +257,7 @@ footer button:hover {
     .split-screen {
         flex-direction: column;
     }
-    .split-screen::after {
+    .page-wrapper::after {
         display: none;
     }
     .left {
@@ -274,7 +269,7 @@ footer button:hover {
 }
 
 @media (max-width: 600px) {
-    .footer-content {
+    .footer-container {
         flex-direction: column;
         align-items: center;
         text-align: center;

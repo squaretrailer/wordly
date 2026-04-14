@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordly</title>
+    <title>Wordly – Dictionary</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,6 @@
 <body>
     <!-- Header -->
     <header>
-        <!-- Navigation Bar -->
         <nav>
             <div class="logo">
                 <img src="images/logo.webp" alt="logo">
@@ -27,54 +26,55 @@
             </div>
         </nav>
     </header>
-<!-- Main Content -->
-    <main>
-        <!-- Split Screen -->
-        <div class="split-screen">
-            <div class="left">
-                <div class="search-area">
-                    <input type="text" placeholder="Search for a word">
-                    <button aria-label="Search"><i class="fas fa-search"></i></button>
+
+    <!-- Main content wrapper (for vertical line that reaches footer) -->
+        <main>
+            <div class="split-screen">
+                <div class="left">
+                    <div class="search-area">
+                        <input type="text" id="searchQuery" placeholder="Search for a word">
+                        <button id="searchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div id="searchResults" class="word-display">
+                        <!-- Search results will appear here -->
+                    </div>
                 </div>
-                <div class="word-display">
-                    <!-- Search results will appear here -->
+                <div class="right">
+                    <img src="images/Pocket-Dictionary.webp" alt="book">
                 </div>
             </div>
-            <div class="right">
-                <img src="images/Pocket-Dictionary.webp" alt="book">
-            </div>
-        </div>
-    </main>
-<!-- Footer -->
-    <footer id="contact">
-        <div class="footer-container">
-            <div class="footer-form">
-                <h3>Contact Us</h3>
-                <form action="#" method="post">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="tel" name="phone" placeholder="Your Phone Number">
-                    <button type="submit">Send</button>
-                </form>
-            </div>
-            <div class="footer-right">
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+        </main>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-container">
+                <div class="footer-form">
+                    <h3>Contact Us</h3>
+                    <form action="#" method="post">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="phone" placeholder="Your Phone Number">
+                        <button type="submit">Send</button>
+                    </form>
                 </div>
-               <div class="wordly-message">
-    <h3>Why use Wordly?</h3>
-    <p>Wordly provides accurate, real‑time definitions from trusted dictionaries. No ads, no clutter – just clear meanings, example sentences, and pronunciation guides. Whether you're a student, writer, or lifelong learner, Wordly helps you understand and use words with confidence.</p>
-    <p>✨ Trusted by thousands of daily users. ✨</p>
-</div>
+                <div class="footer-right">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="wordly-message">
+                        <h3>Why use Wordly?</h3>
+                        <p>Wordly provides accurate, real‑time definitions from trusted dictionaries. No ads, no clutter – just clear meanings, example sentences, and pronunciation guides. Whether you're a student, writer, or lifelong learner, Wordly helps you understand and use words with confidence.</p>
+                        <p>✨ Trusted by thousands of daily users. ✨</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <p>&copy; 2025 Wordly. All rights reserved.</p>
-        <button id="backToTopBtn">Back to Top</button>
-    </footer>
-    <!-- Link with JavaScript -->
+            <p>&copy; 2025 Wordly. All rights reserved.</p>
+            <button id="backToTopBtn">Back to Top</button>
+        </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
