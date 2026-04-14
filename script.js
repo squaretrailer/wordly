@@ -104,7 +104,27 @@ function setupBackToTop() {
         });
     }
 }
-
+//Save my words to favourites
+function saveToFavourites() {
+    const input = document.getElementById('searchQuery');
+    if (!input) return;
+    const word = input.value.trim();
+    if (!word) {
+        alert('No word to save. Please search for a word first.');
+        return;
+    }
+    
+    let favourites = JSON.parse(localStorage.getItem('favourites') || '[]');
+    const normalizedWord = word.toLowerCase();
+    if (favourites.includes(normalizedWord)) {
+        alert(`"${word}" is already in your favourites.`);
+        return;
+    }
+    
+    favourites.push(normalizedWord);
+    localStorage.setItem('favourites', JSON.stringify(favourites));
+    alert(`"${word}" saved to favourites!`);
+}
 // Restore last searched word from localStorage on page load
 function restoreLastWord() {
     const lastWord = localStorage.getItem('lastWord');
