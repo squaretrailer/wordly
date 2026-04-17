@@ -52,17 +52,5 @@ wordly-dictionary/
 | `setupBackToTop()` | Smooth scroll to top. |
 | `restoreLastWord()` | Loads last searched word from localStorage on page load. |
 
-##  Customisation
-
-- **Accent colour** – change `#ff0000` in CSS to any colour you like.
-- **History / favourites limit** – modify the `slice(0, 10)` number in `addToHistory()`.
-- **API** – replace the endpoint with another dictionary API if desired.
-
-##  License
-
-Free to use for learning and personal projects.
-
----
-
-**Built with curiosity and persistence.**  
-*Keep searching, keep learning.*
+## Conclusion
+-This was done by Christian.
