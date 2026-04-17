@@ -1,6 +1,4 @@
-// ============================================
 // DICTIONARY API SEARCH
-// ============================================
 async function searchWord(optionalWord) {
     const input = document.getElementById('searchQuery');
     let word = optionalWord;
@@ -81,9 +79,7 @@ async function searchWord(optionalWord) {
     }
 }
 
-// ============================================
 // CLEAR SEARCH
-// ============================================
 function clearSearch() {
     const input = document.getElementById('searchQuery');
     const resultsDiv = document.getElementById('searchResults');
@@ -91,9 +87,8 @@ function clearSearch() {
     if (resultsDiv) resultsDiv.innerHTML = '<p>Your results will appear here.</p>';
 }
 
-// ============================================
+
 // FAVOURITES MANAGEMENT (with display)
-// ============================================
 function getFavourites() {
     return JSON.parse(localStorage.getItem('favourites') || '[]');
 }
@@ -169,9 +164,8 @@ function clearAllFavourites() {
     }
 }
 
-// ============================================
 // SEARCH HISTORY (localStorage, max 10)
-// ============================================
+
 let historyList = document.getElementById('history-list');
 
 function saveHistoryToStorage(history) {
@@ -240,9 +234,9 @@ function renderHistoryList() {
     }
 }
 
-// ============================================
+
 // BACK TO TOP
-// ============================================
+
 function setupBackToTop() {
     const backBtn = document.getElementById('backToTopBtn');
     if (backBtn) {
@@ -252,9 +246,8 @@ function setupBackToTop() {
     }
 }
 
-// ============================================
+
 // RESTORE LAST SEARCHED WORD
-// ============================================
 function restoreLastWord() {
     const lastWord = localStorage.getItem('lastWord');
     if (lastWord) {
@@ -263,9 +256,8 @@ function restoreLastWord() {
     }
 }
 
-// ============================================
 // INITIALIZE EVENT LISTENERS
-// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
     const searchBtn = document.getElementById('searchBtn');
     const searchInput = document.getElementById('searchQuery');
